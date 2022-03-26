@@ -1,9 +1,9 @@
 <?php
 //DB params
-define('DB_HOST', '');
-define('DB_USER', '');
-define('DB_PASS', '');
-define('DB_NAME', '');
+define('DB_HOST', 'localhost:8012');
+define('DB_USER', 'root');
+define('DB_PASS', 'hosehead');
+define('DB_NAME', 'crudolies');
 
 //APPROOT so we can send data to the views
 define('APPROOT', dirname(dirname(__FILE__)));
