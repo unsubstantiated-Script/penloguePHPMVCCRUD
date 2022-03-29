@@ -125,7 +125,83 @@ class Pages extends Controller
 
     public function edit_pen($id)
     {
-        $this->view('pages/edit_pen');
+        $pen_brand = $pen_name = $pen_color = $nib = $filling_mech = $ink_brand = $ink_color = $date_filled = '';
+
+
+        //Sanitizing stuff as it's coming in
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //Santizing with a host of methods...
+            $pen_brand = $this->test_input($_POST['pen-brand']);
+            $pen_name = $this->test_input($_POST['pen-name']);
+            $pen_color = $this->test_input($_POST['pen-color']);
+            $nib = $this->test_input($_POST['nib']);
+            $filling_mech = $this->test_input($_POST['filling-mech']);
+            $ink_brand = $this->test_input($_POST['ink-brand']);
+            $ink_color = $this->test_input($_POST['ink-color']);
+            $date_filled = $this->test_input($_POST['date-filled']);
+
+            //Loading up the stuff in an associative array
+            $data = [
+                'id' => $id,
+                'pen_brand' => $pen_brand,
+                'pen_name' => $pen_name,
+                'pen_color' => $pen_color,
+                'nib' => $nib,
+                'filling_mech' => $filling_mech,
+                'ink_brand' => $ink_brand,
+                'ink_color' => $ink_color,
+                'date_filled' => $date_filled,
+                'edit_data' => false,
+                'err' => ''
+            ];
+
+            //Checking to see if any were left blank
+            if (
+                empty($data['pen_brand']) ||
+                empty($data['pen_name']) ||
+                empty($data['pen_color']) ||
+                empty($data['nib']) ||
+                empty($data['filling_mech']) ||
+                empty($data['ink_brand']) ||
+                empty($data['ink_color']) ||
+                empty($data['date_filled'])
+
+            ) {
+                $data['err'] = 'Please complete all fields!';
+            }
+
+
+            //If the error log is good, we can push forward with the request
+            if (empty($data['err'])) {
+                //Buried the request in a clever bit of error handling...
+                if ($this->penModel->updatePen($data)) {
+                    redirect('pages');
+                } else {
+                    die('something went wrong');
+                }
+                //load view with error
+            } else {
+                $this->view('pages/edit_pen', $data);
+            }
+        } else {
+
+            $post = $this->penModel->getPenById($id);
+
+            //Keeping our stuff in place in case of an error
+            $data = [
+                'id' => $id,
+                'pen_brand' => $post->penBrand,
+                'pen_name' => $post->penName,
+                'pen_color' => $post->penColor,
+                'nib' => $post->nib,
+                'filling_mech' => $post->fillingMech,
+                'ink_brand' => $post->inkBrand,
+                'ink_color' => $post->inkColor,
+                'date_filled' => $post->dateFilled
+            ];
+
+            $this->view('pages/edit_pen', $data);
+        }
     }
 
     private function test_input($data)

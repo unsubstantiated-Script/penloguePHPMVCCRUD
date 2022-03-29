@@ -52,7 +52,7 @@ class Pen
     }
 
 
-    public function editPen($data)
+    public function updatePen($data)
     {
         $this->db->query('UPDATE pendata SET 
         penBrand = :penBrand, 
