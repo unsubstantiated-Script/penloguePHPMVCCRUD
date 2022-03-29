@@ -52,6 +52,38 @@ class Pen
     }
 
 
+    public function editPen($data)
+    {
+        $this->db->query('UPDATE pendata SET 
+        penBrand = :penBrand, 
+        penName = :penName, 
+        penColor = :penColor, 
+        nib = :nib, 
+        fillingMech = :fillingMech, 
+        inkBrand = :inkBrand, 
+        inkColor = :inkColor, 
+        dateFilled = :dateFilled 
+        WHERE id = :id');
+
+        $this->db->bind(':penBrand', $data['pen_brand']);
+        $this->db->bind(':penName', $data['pen_name']);
+        $this->db->bind(':penColor', $data['pen_color']);
+        $this->db->bind(':nib', $data['nib']);
+        $this->db->bind(':fillingMech', $data['filling_mech']);
+        $this->db->bind(':inkBrand', $data['ink_brand']);
+        $this->db->bind(':inkColor', $data['ink_color']);
+        $this->db->bind(':dateFilled', $data['date_filled']);
+        $this->db->bind(':id', $data['id']);
+        //execute 
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
     //delete a post
     public function deletePen($id)
     {
