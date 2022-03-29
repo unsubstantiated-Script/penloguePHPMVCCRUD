@@ -50,4 +50,18 @@ class Pen
             return false;
         }
     }
+
+
+    //delete a post
+    public function deletePen($id)
+    {
+        $this->db->query('DELETE FROM pendata WHERE id = :id');
+        $this->db->bind(':id', $id);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

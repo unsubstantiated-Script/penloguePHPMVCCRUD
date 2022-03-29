@@ -108,6 +108,21 @@ class Pages extends Controller
         }
     }
 
+    public function delete_pen($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            //call delete method from post model
+            if ($this->penModel->deletePen($id)) {
+                redirect('pages');
+            } else {
+                die('something went wrong');
+            }
+        } else {
+            redirect('pages');
+        }
+    }
+
     public function edit_pen($id)
     {
         $this->view('pages/edit_pen');

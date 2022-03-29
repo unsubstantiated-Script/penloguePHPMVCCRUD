@@ -26,7 +26,7 @@ require APPROOT . '/views/includes/navigation.php'
                             <div class="d-flex justify-content-center">
                                 <a class="btn btn-secondary me-3 btn-block" href="<?= URLROOT ?>/pages/show_pen/<?= $pen->id ?>">Details</a>
                                 <a class=" btn btn-warning me-3" href="<?= URLROOT ?>/pages/edit_pen/<?= $pen->id ?>">Edit Pen</a>
-                                <form class="" action="" method="POST" onSubmit="return confirm('Are you sure you want to delete this?')">
+                                <form action="<?= URLROOT ?>/Pages/delete_pen/<?= $pen->id ?>" method="POST" onSubmit="return confirm('Are you sure you want to delete this?')">
                                     <button class="btn btn-danger  btn-index" type="submit">Delete </button>
                                 </form>
                             </div>

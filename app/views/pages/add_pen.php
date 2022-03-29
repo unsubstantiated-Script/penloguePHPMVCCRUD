@@ -13,7 +13,7 @@ require APPROOT . '/views/includes/head.php'
                     <select class="form-control" type="text" name="pen-brand" id="pen-brand">
                         <option value="">--Select--</option>
                         <option value="Aurora" <?php if (isset($data['pen_brand']) && $data['pen_brand'] == "Aurora") echo "selected"; ?>>Aurora</option>
-                        <option value="Caran d'Ache" <?php if (isset($data['pen_brand']) && $data['pen_brand'] == "Caran d'Ache") echo "selected"; ?>>Caran d'Ache</option>
+                        <option value="Caran d Ache" <?php if (isset($data['pen_brand']) && $data['pen_brand'] == "Caran d Ache") echo "selected"; ?>>Caran d Ache</option>
                         <option value="Cross" <?php if (isset($data['pen_brand']) && $data['pen_brand'] == "Cross") echo "selected"; ?>>Cross</option>
                         <option value="Aurora" <?php if (isset($data['pen_brand']) && $data['pen_brand'] == "Aurora") echo "selected"; ?>>Aurora</option>
                         <option value="Faber Castell" <?php if (isset($data['pen_brand']) && $data['pen_brand'] == "Faber Castell") echo "selected"; ?>>Faber Castell</option>
