@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	top: 0;
+	bottom: 0;
+	font-family: "Quicksand", sans-serif;
+}
+
+h1 {
+	font-family: "Pinyon Script", cursive;
+}
+
+th,
+td {
+	white-space: nowrap;
+}
+
+@media (max-width: 1300px) {
+	.pen-table-outer {
+		overflow-x: scroll;
+	}
+}

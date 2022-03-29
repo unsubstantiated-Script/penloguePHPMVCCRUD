@@ -10,7 +10,7 @@ define('APPROOT', dirname(dirname(__FILE__)));
 // echo __FILE__;
 
 //URLROOT good for dynamic links
-define('URLROOT', 'localhost:8012/pen-list');
+define('URLROOT', 'http://localhost:8012/pen-list');
 //<a href="URLROOT" />
 
 //SiteName

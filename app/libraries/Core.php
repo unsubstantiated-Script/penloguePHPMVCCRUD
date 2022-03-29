@@ -3,7 +3,7 @@
 //Core App Class
 class Core
 {
-    protected $currentController = 'pages';
+    protected $currentController = 'Pages';
     protected $currentMethod = 'index';
     //Storing an expanding url 
     protected $params = [];
@@ -14,8 +14,9 @@ class Core
         //Grabbing the URL array
         $url = $this->getUrl();
 
+
         //Checking to see if the file that matches the url exists in the controller...ucwords capitalizes the first letter
-        if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+        if (isset($url[0]) && file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
             // If exists, set as controller
             $this->currentController = ucwords($url[0]);
             // Unset 0 Index
